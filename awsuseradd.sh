@@ -35,6 +35,10 @@ sudo  chmod 755 /home/$uservar/.bash_profile
 
 #Modify the PATH variable
 #sudo echo "PATH=$HOME/bin" >> /home/$uservar/.bash_profile
+sed -i 's/PATH=/#PATH/g' /home/$uservar/.bash_profile
+sed -i 's/export/#export/g ' /home/$uservar/.bash_profile
+echo "PATH=/home/$uservar/bin" >> /home/$uservar/.bash_profile
+ echo "export PATH" >> /home/$uservar/.bash_profile
 
 #Copy  public key to the authorized keys file for the new user 
 sudo cp -rf  /home/ec2-user/.ssh /home/$uservar/
