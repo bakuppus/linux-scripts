@@ -28,6 +28,10 @@ sudo  mkdir /home/$uservar/bin
 #specify which commands the user can run
 sudo ln -s /bin/ls /home/$uservar/bin/ls
 sudo ln -s /bin/sh /home/$uservar/bin/sh
+sudo ln -s /bin/grep /home/$uservar/bin/grep
+sudo ln -s /bin/cat /home/$uservar/bin/cat
+sudo ln -s /usr/bin/tail /home/$uservar/bin/tail
+sudo ln -s /usr/bin/less /home/$uservar/bin/less
 
 #prevent the user from modifying .bash_profile
 sudo   chown root. /home/$uservar/.bash_profile
