@@ -1,0 +1,96 @@
+Following hosts has HBA Link issue
+=================================
+
+
+for i in `ls -ld /sys/class/fc_host/host* | awk '{print $9}'` ; do echo 1 > $i/issue_lip; sleep 15; done
+for i in `ls -ld /sys/class/scsi_host/host* | awk '{print $9}' `; do echo "- - -" > $i/scan; done
+
+
+
+RHEL7
+
+yum install sg3_utils -y
+rescan-scsi-bus.sh -a  ==== to add
+rescan-scsi-bus.sh -r ====== to remove
+
+
+yum install sg3_utils -y ; rescan-scsi-bus.sh -a
+
+ 
+
+[root@dbcj-stg1-03 ~]# cat /sys/class/scsi_host/host*/state
+Link Up - F_Port
+Link Down
+[root@dbcj-stg1-03 ~]# cat /sys/class/fc_host/host*/port_name
+0x200227000000001c
+0x200227000000000c ==> 
+
+ 
+
+ 
+
+ 
+
+[root@cna-dev-web4 ~]# cat /sys/class/scsi_host/host*/state
+Link Up - F_Port
+Link Down
+[root@cna-dev-web4 ~]# cat /sys/class/fc_host/host*/port_name
+0x20020d000000009f
+0x20020d000000008f ==> 
+[root@cna-dev-web4 ~]# cat /sys/class/fc_host/host*/port_type
+NPort (fabric via point-to-point)
+Unknown
+
+ 
+
+ 
+
+ 
+
+[root@lnxdb-dev-103 ~]# cat /sys/class/scsi_host/host*/state
+Link Up - F_Port
+Link Down
+[root@lnxdb-dev-103 ~]# cat /sys/class/fc_host/host*/speed
+4 Gbit
+unknown
+[root@lnxdb-dev-103 ~]# cat /sys/class/fc_host/host*/port_name
+0x20022600000000df
+0x20022600000000ff ==> 
+
+ 
+
+
+root@lnxdb-stg-164 ~]# cat /sys/class/scsi_host/host*/state
+running
+running
+Link Up - F_Port
+Link Down
+
+ 
+
+
+[root@lnxdb-stg-164 ~]# cat /sys/class/scsi_host/host*/state
+Link Up - F_Port
+Link Down
+[root@lnxdb-stg-164 ~]# cat /sys/class/fc_host/host*/speed
+4 Gbit
+unknown
+[root@lnxdb-stg-164 ~]# cat /sys/class/fc_host/host*/port_name
+0x20022c000000003f
+0x20022c000000002f ==> 
+
+ 
+
+ 
+
+ 
+
+[root@lnxdb-stg-176 ~]# cat /sys/class/scsi_host/host*/state
+Link Up - F_Port
+Link Down
+[root@lnxdb-stg-176 ~]# cat /sys/class/fc_host/host*/speed
+4 Gbit
+unknown
+[root@lnxdb-stg-176 ~]# cat /sys/class/fc_host/host*/port_name
+0x200227000000009b
+0x200227000000008b ==> 
