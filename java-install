@@ -1,1 +1,4 @@
+#!/bin/bash
+#Author: Bala
+
 cd /usr/java/ ; tar -xvzf jdk-8u172-linux-x64.tar.gz ; ln -sf jdk1.8.0_172 latest ; ln -sf /usr/java/jdk1.8.0_172/jre/bin/java /etc/alternatives/java ; java -version 
